@@ -49,9 +49,8 @@ public class LogAnalyzer
     public int busiestHour()
     {
         int mostAccesses = 0;
-        int i = 0;
         int cont = 0;
-        for (i = 0; i < hourCounts.length;i++)
+        for (int i = 0; i < hourCounts.length;i++)
         {
             if (hourCounts[i] > mostAccesses)
             {
@@ -60,6 +59,19 @@ public class LogAnalyzer
             }            
         }
         return cont;
+    }
+    
+    public int quietestHour()
+    {
+        int lessAccesses = 0;
+        for (int i = 0; i < hourCounts.length;i++)
+        {            
+            if (hourCounts[i] < hourCounts[lessAccesses])
+            {
+                lessAccesses = i;
+            }            
+        }
+        return lessAccesses;
     }
     
     private int numberOfAccesses()
