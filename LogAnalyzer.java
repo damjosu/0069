@@ -45,7 +45,17 @@ public class LogAnalyzer
             hourCounts[hour]++;
         }
     }
-
+    
+    private int numberOfAccesses()
+    {
+        int accesses = 0;
+        for (int i = 0; i < hourCounts.length;i++)
+        {
+            accesses += hourCounts[i];
+        }
+        return accesses;
+    }
+    
     /**
      * Print the hourly counts.
      * These should have been set with a prior
