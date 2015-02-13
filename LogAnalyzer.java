@@ -78,17 +78,13 @@ public class LogAnalyzer
     {
         int mostAccesses = 0;
         int cont = 0;
-        for (int i = 0; i < hourCounts.length;i++)
-        {
-            if (hourCounts[i + 1] < hourCounts.length)
-            {
+        for (int i = 0; i < (hourCounts.length - 1); i++)
+        {  
                 if ((hourCounts[i] + hourCounts[i + 1]) > mostAccesses)
                 {
                     mostAccesses = hourCounts[i];
                     cont = i;
                 }          
-            }
-
         }
         return cont;
     }
@@ -96,7 +92,7 @@ public class LogAnalyzer
     private int numberOfAccesses()
     {
         int accesses = 0;
-        for (int i = 0; i < hourCounts.length;i++)
+        for (int i = 0; i < hourCounts.length; i++)
         {
             accesses += hourCounts[i];
         }
