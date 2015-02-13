@@ -25,6 +25,16 @@ public class LogAnalyzer
     }
 
     /**
+     * 
+     */
+    
+    public LogAnalyzer(String log)
+    {
+        hourCounts = new int[24];
+        reader = new LogfileReader(log);
+    }
+    
+    /**
      * Analyze the hourly access data from the log file.
      */
     public void analyzeHourlyData()
