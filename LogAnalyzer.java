@@ -45,7 +45,26 @@ public class LogAnalyzer
             hourCounts[hour]++;
         }
     }
-
+     
+    /** 
+     * Analyze the hourly accesses in the given date
+     *
+     * @param day     The given day
+     * @param month The given month
+     * @param year  The given year
+     */         
+    public void analyzeHourlyData(int day, int month, int year)
+    {
+        while(reader.hasNext()) {
+            LogEntry entry = reader.next();
+            if(day == entry.getDay() && month == entry.getMonth() && year == entry.getYear())
+            {
+                int hour = entry.getHour();
+                hourCounts[hour]++;
+            }            
+        }
+    }
+    
     public int busiestHour()
     {
         int mostAccesses = 0;
