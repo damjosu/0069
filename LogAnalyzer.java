@@ -27,13 +27,13 @@ public class LogAnalyzer
     /**
      * 
      */
-    
+
     public LogAnalyzer(String log)
     {
         hourCounts = new int[24];
         reader = new LogfileReader(log);
     }
-    
+
     /**
      * Analyze the hourly access data from the log file.
      */
@@ -45,7 +45,7 @@ public class LogAnalyzer
             hourCounts[hour]++;
         }
     }
-    
+
     public int busiestHour()
     {
         int mostAccesses = 0;
@@ -60,7 +60,7 @@ public class LogAnalyzer
         }
         return cont;
     }
-    
+
     public int quietestHour()
     {
         int lessAccesses = 0;
@@ -73,7 +73,26 @@ public class LogAnalyzer
         }
         return lessAccesses;
     }
-    
+
+    public int busiestPeriod()
+    {
+        int mostAccesses = 0;
+        int cont = 0;
+        for (int i = 0; i < hourCounts.length;i++)
+        {
+            if (hourCounts[i + 1] < hourCounts.length)
+            {
+                if ((hourCounts[i] + hourCounts[i + 1]) > mostAccesses)
+                {
+                    mostAccesses = hourCounts[i];
+                    cont = i;
+                }          
+            }
+
+        }
+        return cont;
+    }
+
     private int numberOfAccesses()
     {
         int accesses = 0;
@@ -83,7 +102,7 @@ public class LogAnalyzer
         }
         return accesses;
     }
-    
+
     /**
      * Print the hourly counts.
      * These should have been set with a prior
@@ -99,7 +118,7 @@ public class LogAnalyzer
             hour++;
         }
     }
-        
+
     /**
      * Print the lines of data read by the LogfileReader
      */
